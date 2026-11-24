@@ -1,3 +1,101 @@
 [gd_scene format=3 uid="uid://ss5byb26gvtk"]
 
+[ext_resource type="Script" uid="uid://de06bbtxhxhq7" path="res://Scripts/level_2.gd" id="1_m40gi"]
+[ext_resource type="ArrayMesh" uid="uid://gxo6c1usdcbo" path="res://Models/elephant.obj" id="2_svn12"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_smuj1"]
+size = Vector2(30, 30)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n5tgu"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5iseo"]
+
 [node name="Level2" type="Node3D" unique_id=1719565423]
+script = ExtResource("1_m40gi")
+
+[node name="Tittle" type="Label" parent="." unique_id=1541916368]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "¡Shinnosuke!"
+
+[node name="Wall" type="MeshInstance3D" parent="." unique_id=635020630]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -27.971853)
+mesh = SubResource("QuadMesh_smuj1")
+
+[node name="WinArea" type="Area3D" parent="Wall" unique_id=1971722713]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall/WinArea" unique_id=666286380]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+shape = SubResource("BoxShape3D_n5tgu")
+debug_color = Color(0.53162044, 0.5709294, 0, 0.41960785)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1474856188]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.193631)
+light_energy = 6.63
+shadow_enabled = true
+spot_range = 71.76155
+spot_angle = 28.051502
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1568195638]
+transform = Transform3D(0.68167925, 0, 0.7316512, 0, 1, 0, -0.7316512, 0, 0.68167925, 8.6690235, 3, 6.88301)
+fov = 67.5
+
+[node name="WinUI" type="VBoxContainer" parent="." unique_id=737821844]
+visible = false
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -84.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="WinUI" unique_id=2120800679]
+layout_mode = 2
+text = "Level Complete!
+¡Mira que trompa!"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="WinUI" unique_id=1472093444]
+layout_mode = 2
+alignment = 1
+
+[node name="QuitButton" type="Button" parent="WinUI/HBoxContainer" unique_id=576958339]
+layout_mode = 2
+text = "Quit Game"
+
+[node name="BackToMenuButton" type="Button" parent="WinUI/HBoxContainer" unique_id=1785193375]
+layout_mode = 2
+text = "Go back to menu"
+
+[node name="Elephant" type="MeshInstance3D" parent="." unique_id=1784624301]
+transform = Transform3D(-0.8669445, 0.30476254, -0.3943697, -0.12891945, -0.90145636, -0.4132268, -0.4814431, -0.3074027, 0.8208022, 0, 0, 0)
+mesh = ExtResource("2_svn12")
+
+[node name="ElefantRay" type="RayCast3D" parent="Elephant" unique_id=642621804]
+transform = Transform3D(41.527775, 6.280233, -0.0552636, -6.2449174, 41.330307, 4.0995674, 0.6673888, -4.0452557, 41.799404, 0, 0, 0)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Area3D" type="Area3D" parent="Elephant" unique_id=249041531]
+transform = Transform3D(-0.4270422, 0, -0.9042317, 0, 1, 0, 0.9042317, 0, -0.4270422, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Elephant/Area3D" unique_id=176271089]
+transform = Transform3D(7, 0, -2.086162e-07, 0, 7, 0, 2.086162e-07, 0, 7, 0, 0, 0)
+shape = SubResource("SphereShape3D_5iseo")
+
+[node name="Controls" type="Label" parent="." unique_id=668477144]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "Click the misterius object to rotate it"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=808373061]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 9.098796, 0)
+shadow_enabled = true
+
+[connection signal="pressed" from="WinUI/HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="WinUI/HBoxContainer/BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]
+[connection signal="input_event" from="Elephant/Area3D" to="." method="_on_area_3d_input_event"]

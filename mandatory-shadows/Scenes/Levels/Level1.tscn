@@ -1,3 +1,84 @@
 [gd_scene format=3 uid="uid://cen0xp7402t54"]
 
+[ext_resource type="ArrayMesh" uid="uid://c3vhnh7173m7e" path="res://Models/tea_pot.obj" id="1_5jgm0"]
+[ext_resource type="Script" uid="uid://c2fnot5nidoxl" path="res://Scripts/level_1.gd" id="1_36ke7"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_riv1q"]
+height = 3.25
+radius = 3.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_36ke7"]
+size = Vector2(4242, 4242)
+
 [node name="Level1" type="Node3D" unique_id=1871727103]
+script = ExtResource("1_36ke7")
+sensitivity = 0.003
+
+[node name="Tittle" type="Label" parent="." unique_id=629274697]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Error 418"
+
+[node name="TeaPot" type="MeshInstance3D" parent="." unique_id=850287143]
+transform = Transform3D(-0.4270422, 0, -0.9042317, 0, 1, 0, 0.9042317, 0, -0.4270422, 0, 0, 0)
+mesh = ExtResource("1_5jgm0")
+
+[node name="Area3D" type="Area3D" parent="TeaPot" unique_id=2006174058]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TeaPot/Area3D" unique_id=1427078259]
+transform = Transform3D(1.0000002, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1.0000002, 0, 0.875, 0)
+shape = SubResource("CylinderShape3D_riv1q")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=282890259]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.07937)
+mesh = SubResource("QuadMesh_36ke7")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=916846422]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.193631)
+light_energy = 10.0
+shadow_enabled = true
+spot_range = 63.275997
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1365893536]
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 4, 3, 7)
+fov = 67.5
+
+[node name="WinUI" type="VBoxContainer" parent="." unique_id=1596897871]
+visible = false
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -84.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="WinUI" unique_id=459094689]
+layout_mode = 2
+text = "Level Complete!
+Tea time!"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="WinUI" unique_id=899276128]
+layout_mode = 2
+alignment = 1
+
+[node name="QuitButton" type="Button" parent="WinUI/HBoxContainer" unique_id=920865246]
+layout_mode = 2
+text = "Quit Game"
+
+[node name="BackToMenuButton" type="Button" parent="WinUI/HBoxContainer" unique_id=445983500]
+layout_mode = 2
+text = "Go back to menu"
+
+[node name="Controls" type="Label" parent="." unique_id=643307186]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "Click the misterius object to rotate it"
+
+[connection signal="input_event" from="TeaPot/Area3D" to="." method="_on_area_3d_input_event"]
+[connection signal="pressed" from="WinUI/HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="WinUI/HBoxContainer/BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]

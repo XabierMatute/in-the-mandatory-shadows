@@ -1,3 +1,81 @@
 [gd_scene format=3 uid="uid://c30ygkb6cnngm"]
 
+[ext_resource type="Script" uid="uid://bl18tfkstm2b1" path="res://Scripts/level_menu.gd" id="1_fbbup"]
+
 [node name="LevelMenu" type="Node" unique_id=1605192098]
+script = ExtResource("1_fbbup")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=813852153]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=695861090]
+layout_mode = 2
+text = "Levels:"
+
+[node name="L1Button" type="Button" parent="VBoxContainer" unique_id=1993722718]
+layout_mode = 2
+text = "Level1:
+Sombras normalescas"
+
+[node name="L2Button" type="Button" parent="VBoxContainer" unique_id=1927961261]
+layout_mode = 2
+disabled = true
+text = "Level2:
+The shadow in the room"
+
+[node name="L3Button" type="Button" parent="VBoxContainer" unique_id=1878912992]
+layout_mode = 2
+text = "Level3:
+Less than 50 shadows"
+
+[node name="BackButton" type="Button" parent="." unique_id=301282304]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+offset_right = 158.0
+grow_vertical = 0
+text = "Back to main menu"
+
+[node name="TestLabel" type="Label" parent="." unique_id=960757421]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "TestMode"
+
+[node name="HBoxContainerTest" type="HBoxContainer" parent="." unique_id=294232383]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="TestA1Button" type="Button" parent="HBoxContainerTest" unique_id=590016833]
+layout_mode = 2
+text = "solved animation"
+
+[node name="TestA2Button2" type="Button" parent="HBoxContainerTest" unique_id=375031710]
+layout_mode = 2
+text = "unlock animation"
+
+[connection signal="pressed" from="VBoxContainer/L1Button" to="." method="_on_l_1_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/L2Button" to="." method="_on_l_2_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/L3Button" to="." method="_on_l_3_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="HBoxContainerTest/TestA1Button" to="." method="_on_test_a_1_button_pressed"]
+[connection signal="pressed" from="HBoxContainerTest/TestA2Button2" to="." method="_on_test_a_2_button_2_pressed"]

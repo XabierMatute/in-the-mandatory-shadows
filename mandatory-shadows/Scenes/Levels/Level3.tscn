@@ -1,3 +1,42 @@
 [gd_scene format=3 uid="uid://ca3n2ldie6u47"]
 
-[node name="Level3" type="Node" unique_id=492532331]
+[ext_resource type="ArrayMesh" uid="uid://3n2exa2vyxp4" path="res://Models/logo-2.obj" id="1_6rkx2"]
+[ext_resource type="ArrayMesh" uid="uid://cumf2jeqrytmm" path="res://Models/logo-4.obj" id="2_y6rnf"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_gcv4e"]
+size = Vector2(4242, 4242)
+
+[node name="Level3" type="Node3D" unique_id=1646148807]
+
+[node name="Tittle" type="Label" parent="." unique_id=601109459]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "The answer"
+
+[node name="Wall" type="MeshInstance3D" parent="." unique_id=1663228268]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -60.120224)
+mesh = SubResource("QuadMesh_gcv4e")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=821059418]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21.349861)
+visible = false
+light_energy = 10.0
+shadow_enabled = true
+spot_range = 155.59558
+spot_angle = 68.49548
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=880734161]
+transform = Transform3D(0.5256665, -0.19808787, 0.8273065, -0.06653122, 0.95995957, 0.27212355, -0.84808517, -0.19808793, 0.49143952, 24.681774, 12, 20)
+fov = 67.5
+
+[node name="2" type="MeshInstance3D" parent="." unique_id=950001164]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8876953, 0, 0)
+mesh = ExtResource("1_6rkx2")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1861579718]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.130291, 0, 0)
+mesh = ExtResource("2_y6rnf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=492013760]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 37)
+shadow_enabled = true

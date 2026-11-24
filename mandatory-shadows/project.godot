@@ -12,7 +12,11 @@ config_version=5
 
 config/name="mandatory shadows"
 run/main_scene="uid://b6yexopbq1i73"
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/features=PackedStringArray("4.7", "Forward Plus")
+
+[autoload]
+
+GameState="*uid://sgtrxdaah0ln"
 
 [physics]
 
