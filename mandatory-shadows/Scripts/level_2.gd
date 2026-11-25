@@ -1,7 +1,5 @@
 extends Node3D
 
-# 62 85 -90
-
 @export var sensitivity: float = 0.001
 
 var dragging = false
