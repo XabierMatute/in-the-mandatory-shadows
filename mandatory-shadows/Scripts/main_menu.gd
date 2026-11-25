@@ -17,7 +17,7 @@ func show_progress() -> void:
 		text += "Nivel %d: %s %s\n" % [i + 1, "✔" if levels[i] else "✘", "!" if just[i] else ""]
 
 	var done := levels.count(true)
-	text += "\nProgreso: %d/%d (%d%%)" % [done, levels.size(), done * 100 / levels.size()]
+	text += "\nProgreso: %d/%d" % [done, levels.size()]
 	$VBoxContainer2/ProgressLabel.text = text
 
 func _ready() -> void:

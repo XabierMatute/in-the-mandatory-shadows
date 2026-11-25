@@ -102,7 +102,7 @@ shape = SubResource("BoxShape3D_6rkx2")
 debug_color = Color(0.53162044, 0.5709294, 0, 0.41960785)
 
 [node name="2" type="Node3D" parent="." unique_id=1418991782]
-transform = Transform3D(0.24686702, -0.9690494, 0, 0.9690494, 0.24686702, 0, 0, 0, 1, -21.633762, -2.4443855, 8.622166)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.633762, -2.4443855, 8.622166)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="2" unique_id=950001164]
 transform = Transform3D(0.28344452, -0.4526365, 0.8454463, -0.95810825, -0.17142995, 0.22943519, 0.04108399, -0.8750611, -0.48226562, 0, 0, 0)

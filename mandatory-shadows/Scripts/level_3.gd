@@ -51,8 +51,6 @@ func _input(event: InputEvent) -> void:
 		not dragging
 		and $"4/MeshInstance3D/ElefantRay".get_collider()  == $"4/WinArea"
 		and $"2/MeshInstance3D/ElefantRay".get_collider()  == $"2/WinArea"
-		#and $"2".global_position.x - $"4".global_position.x > 0
-		#and $"2".global_position.x - $"4".global_position.x < 42
 		and $"4/MeshInstance3D/PeerArea".overlaps_area($"2/MeshInstance3D/PeerArea")
 		):
 		$WinUI.visible = true
@@ -71,5 +69,5 @@ func _on_quit_button_pressed() -> void:
 func _on_area_3d_input_event_2(_camera: Node, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	_on_area_3d_input_event(event, event_position, $"2/MeshInstance3D")
 
-func _on_area_3d_input_event_4(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+func _on_area_3d_input_event_4(_camera: Node, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 		_on_area_3d_input_event(event, event_position, $"4/MeshInstance3D")
